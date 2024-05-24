@@ -35,11 +35,12 @@
           Supported formats: .m4a .mp3 .webm .mp4 .mpga .wav .mpeg
         </div>
         <div class="form-group">
-          <label for="video-type">Video / Audio type:</label>
-          <select name="video_type" id="video_type" required>
+          <label for="audio-type">Video / Audio type:</label>
+          <select name="audio_type" id="audio_type" required>
             <option value="">Select type</option>
             <option value="lecture">Lecture</option>
             <option value="meeting">Meeting</option>
+            <option value="transcript only">Transcript only</option>
             <option value="other">Other</option>
           </select>
         </div>
@@ -67,17 +68,20 @@
         </div>
 
         <div class="form-group">
-          <label for="gpt_model">Context:</label>
+          <label for="gpt_model">Model:</label>
           <select name="gpt_model" id="gpt_model" required>
-            <option value="">Select context complexity</option>
-            <option value="gpt-3.5-turbo">
-              Standard Complexity (Under ~3000 words)
-            </option>
-            <option value="gpt-3.5-turbo-16k">
-              Standard Complexity (Under ~12000 words)
-            </option>
-            <option value="gpt-4">Complex Ideas (Under ~3000 words)</option>
+            <option value="">Select GPT model when summarizing transcript</option>
+            <option value="gpt-3.5-turbo">GPT-3.5 Turbo</option>
+            <option value="gpt-4">GPT-4</option>
+            <option value="gpt-4-turbo">GPT-4-Turbo</option>
+            <option value="gpt-4o">GPT-4o</option>
           </select>
+          <a
+            href="https://openai.com/api/pricing/"
+            target="_blank"
+          >
+            Model pricing
+          </a>
         </div>
         <div class="form-group">
           <label for="api_key">API Key:</label>
@@ -113,6 +117,13 @@
         <%= transcript %>
       </textarea>
       <% } %>
+
+      <% if (error) { %>
+        <h2 class="subtitle">Error</h2>
+        <textarea readonly class="summary-box">
+          <%= error %>
+        </textarea>
+        <% } %>
     </div>
   </body>
 </html>

@@ -31,7 +31,8 @@ app.get("/", (request, response) => {
         summary: null,
         important_dates: null,
         transcript: null,
-        error: null
+        error: null,
+        run: false
     });
 
 });
@@ -80,6 +81,7 @@ app.post("/run", multerUpload.single("file"), async (request, response) => {
             important_dates: null,
             transcript: null,
             error: "File type not supported. Please select one of: .m4a .mp3 .webm .mp4 .mpga .wav .mpeg",
+            run: true
         });
     }
 
@@ -98,6 +100,7 @@ app.post("/run", multerUpload.single("file"), async (request, response) => {
             important_dates: null,
             transcript: transcript,
             error: error.message,
+            run: true
         });
     }
 
@@ -110,7 +113,8 @@ app.post("/run", multerUpload.single("file"), async (request, response) => {
         summary: summary,
         important_dates: important_dates,
         transcript: transcript,
-        error: null
+        error: null,
+        run: true
     });
 });
 

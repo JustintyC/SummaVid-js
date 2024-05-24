@@ -27,6 +27,8 @@
       />
 
       <h1 class="title">SummaVid</h1>
+
+      <% if (!run) { %>
       <form action="/run" method="post" enctype="multipart/form-data">
         <div class="form-group">
           <label for="file">Upload file:</label>
@@ -96,6 +98,7 @@
         </div>
         <input type="submit" value="Run" class="btn" />
       </form>
+      <% } %>
 
       <% if (summary) { %>
       <h2 class="subtitle">Summary</h2>
@@ -123,7 +126,12 @@
         <textarea readonly class="summary-box">
           <%= error %>
         </textarea>
-        <% } %>
+      <% } %>
+      
+      <% if (run) { %>
+      <a href="/" class="btn">Upload new file</a>
+      <% } %>
+
     </div>
   </body>
 </html>
